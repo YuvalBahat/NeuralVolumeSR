@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Neural Volume Super-Resolution</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;%E2%9C%A8&lt;/text&gt;&lt;/svg&gt;"> -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/codemirror.min.js"></script>
+    <script src="js/clipboard.min.js"></script>
+    <script src="js/video_comparison.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="header" style="text-align: center; margin: auto;">
+        <div class="row" id="title-row" style="max-width: 100%; margin: 0 auto; display: inline-block">
+            <h2 class="col-md-12 text-center" id="title">
+				<b>Neural Volume Super-Resolution</b><br>
+                <!-- <b>Ref-NeRF</b>: Structured View-Dependent <br> Appearance for Neural Radiance Fields<br> -->
+                <small>
+                    Presentation Videos
+                </small>
+            </h2>
+        </div>
+    </div>
+    <script>
+        document.getElementById('author-row').style.maxWidth = document.getElementById("title-row").clientWidth + 'px';
+    </script>
+    <div class="container" id="main">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Our Results (Slide #29)
+                </h2>
+                <div class="video-compare-container" id="materialsDiv">
+                    <video class="video" id="Lego_result_4slider" loop playsinline autoPlay muted src="video/Lego_result_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="Lego_result_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    More Results (Slide #30, left)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="chairShipSceneResults_4slider" loop playsinline autoPlay muted src="video/chairShipSceneResults_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="chairShipSceneResults_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    More Results (Slide #30, right)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="real_scene_results_4slider" loop playsinline autoPlay muted src="video/real_scene_results_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="real_scene_results_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Post Rendering SR (Slide #32)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="postRendering_2D_SR_4slider" loop playsinline autoPlay muted src="video/postRendering_2D_SR_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="postRendering_2D_SR_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Preliminary SR (Slide #33)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="preliminary_2D_SR_4slider" loop playsinline autoPlay muted src="video/preliminary_2D_SR_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="preliminary_2D_SR_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Naïve: Planes-Based Representation (Slide #34, left)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="naiveRealScenes_4slider" loop playsinline autoPlay muted src="video/naiveRealScenes_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="naiveRealScenes_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Naïve: Mip-NeRF (Slide #34, right)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="mipNerfRealScenes_4slider" loop playsinline autoPlay muted src="video/mipNerfRealScenes_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="mipNerfRealScenes_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Reconstruction Quality Boost (Slide #38)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="consistency_lego_both_gif_like_4slider" loop playsinline autoPlay muted src="video/consistency_lego_both_gif_like_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="consistency_lego_both_gif_like_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2>
+                    Conclustion (Slide #40)
+                </h2>
+                <div class="video-compare-container">
+                    <video class="video" id="LegoConclusion_4slider" loop playsinline autoPlay muted src="video/LegoConclusion_4slider.mp4" onplay="resizeAndPlay(this)"></video>
+                    <canvas height=0 class="videoMerge" id="LegoConclusion_4sliderMerge"></canvas>
+                </div>
+			</div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                I would like to thank <a href="https://dorverbin.github.io/">Dor Verbin</a> for providing the template for this web-page, including the (very cool) video-comparison slider interface.
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body></html>
